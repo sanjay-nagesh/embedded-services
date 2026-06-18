@@ -12,11 +12,11 @@ The CFU (Component Firmware Update) service contained two firmware components - 
 
 These changes were approved by ODP's Microsoft team and were merged into ODP. 
 ---
-### Challenges I ran into 
+## Challenges I ran into 
 This was my first time writing production level Rust in such a large codebase. I had to learn and get comfortable with Rust's module system, crate system and their ownership model. I spent a lot of time reading through the existing CFU service code with the help of AI. I learnt how the `Buffer` and `Splitter` fit into the broader firmware architecture before moving forward with anything. This was my first time contributing to an open-source repository and I learnt a lot with it. 
 
 
-===========================================================================================================================================================================================
+====================================================================================================================================================
 [![check](https://github.com/OpenDevicePartnership/embedded-services/actions/workflows/check.yml/badge.svg)](https://github.com/OpenDevicePartnership/embedded-services/actions/workflows/check.yml)
 [![rolling](https://github.com/OpenDevicePartnership/embedded-services/actions/workflows/rolling.yml/badge.svg)](https://github.com/OpenDevicePartnership/embedded-services/actions/workflows/rolling.yml)
 [![LICENSE](https://img.shields.io/badge/License-MIT-blue)](./LICENSE)
