@@ -1,3 +1,22 @@
+## My Contributions
+Fork of: https://github.com/OpenDevicePartnership - Open-source Rust firmware framework for Embedded controllers by Microsoft. 
+---
+##CFU Serfice: Deduplicate Common Response Helper Methods (https://github.com/OpenDevicePartnership/embedded-services/pull/773)
+---
+The CFU (Component Firmware Update) service contained two firmware components - `Buffer` and `Splitter`. Each of them had identitical implementations of `create_invalid_fw_version_response()` and `create_content_rejection()`. So, whenever any protocol required finding and patching both independently, there was a risk of them not staying in sync. To fix this, I did the following:
+
+1. Introduced a new `response.rs` module to consolidate both helper functions into a single shared definition.
+2. Refactored `buffer.rs` and `splitter.rs` to call into `crate:: responses` instead of their respectivr local copies.
+3. Registered the new module in `lib.rs`.
+4. Eliminated duplicated logic and kept the external API of both components unchanged.
+
+These changes were approved by ODP's Microsoft team and were merged into ODP. 
+---
+### Challenges I ran into 
+This was my first time writing production level Rust in such a large codebase. I had to learn and get comfortable with Rust's module system, crate system and their ownership model. I spent a lot of time reading through the existing CFU service code with the help of AI. I learnt how the `Buffer` and `Splitter` fit into the broader firmware architecture before moving forward with anything. This was my first time contributing to an open-source repository and I learnt a lot with it. 
+
+
+===========================================================================================================================================================================================
 [![check](https://github.com/OpenDevicePartnership/embedded-services/actions/workflows/check.yml/badge.svg)](https://github.com/OpenDevicePartnership/embedded-services/actions/workflows/check.yml)
 [![rolling](https://github.com/OpenDevicePartnership/embedded-services/actions/workflows/rolling.yml/badge.svg)](https://github.com/OpenDevicePartnership/embedded-services/actions/workflows/rolling.yml)
 [![LICENSE](https://img.shields.io/badge/License-MIT-blue)](./LICENSE)
