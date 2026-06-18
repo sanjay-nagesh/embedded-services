@@ -6,7 +6,7 @@ Fork of: https://github.com/OpenDevicePartnership - Open-source Rust firmware fr
 The CFU (Component Firmware Update) service contained two firmware components - `Buffer` and `Splitter`. Each of them had identitical implementations of `create_invalid_fw_version_response()` and `create_content_rejection()`. So, whenever any protocol required finding and patching both independently, there was a risk of them not staying in sync. To fix this, I did the following:
 
 1. Introduced a new `response.rs` module to consolidate both helper functions into a single shared definition.
-2. Refactored `buffer.rs` and `splitter.rs` to call into `crate:: responses` instead of their respectivr local copies.
+2. Refactored `buffer.rs` and `splitter.rs` to call into `crate:: responses` instead of their respective local copies.
 3. Registered the new module in `lib.rs`.
 4. Eliminated duplicated logic and kept the external API of both components unchanged.
 
